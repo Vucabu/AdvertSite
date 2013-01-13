@@ -1,0 +1,34 @@
+<li id="<%= feed_item.id %>">
+    <%= link_to gravatar_for(feed_item.user), feed_item.user %>
+    <span class="user">
+        <%= link_to feed_item.title, feed_item.user %>
+    </span>
+    <span class="category">
+        <%= feed_item.category %>
+    </span>
+    <span class="content">
+        <%= feed_item.content %>
+    </span>
+    <br>
+    <span class="email">
+        Email: <%= feed_item.email %>
+    </span>
+    <span class="city">
+        City: <%= feed_item.city %>
+    </span>
+    <span class="address">
+        Address: <%= feed_item.address %>
+    </span>
+    <div class="image">
+        <%= image_tag feed_item.image.url(:small) %>
+    </div>
+    <span class="timestamp_feed">
+        Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
+        <% if current_user?(feed_item.user) %>
+            <%= link_to "Edit", edit_advert_path(feed_item) %>
+            <%= link_to "Delete", feed_item, method: :delete,
+                                               data: { confirm: "You sure?" },
+                                              title: feed_item.content %>
+        <% end %>
+    </span>
+</li>

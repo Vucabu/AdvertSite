@@ -1,0 +1,33 @@
+<% provide(:title, "Edit advert") %>
+<h1>Update your advert</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@advert) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <div class="field">
+            <%= f.label :category_id, "Category" %>
+            <%= f.select :category_id, options_for_select(Category.array) %>
+
+            <%= f.label :title %>
+            <%= f.text_field :title, placeholder: "Title"  %>
+
+            <%= f.label :content %>
+            <%= f.text_area :content, placeholder: "Compose new advert...", :rows=>6 %>
+
+            <%= f.label :email %>
+            <%= f.text_field :email, placeholder: "Email" %>
+
+            <%= f.label :city %>
+            <%= f.text_field :city, placeholder: "City" %>
+
+            <%= f.label :address %>
+            <%= f.text_field :address, placeholder: "Address" %>
+
+            <%= f.label :image %>
+            <%= f.file_field :image %>
+        </div>
+        <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

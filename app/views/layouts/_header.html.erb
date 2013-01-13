@@ -1,0 +1,33 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <%= link_to "Adverts", home_path, id: "logo" %>
+      <nav>
+        <ul class="nav pull-right">
+          <li><%= link_to "Feed", home_path %></li>
+          <% if signed_in? %>
+              <li id="fat-menu" class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <%= current_user.name %> <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <% if admin? %>
+                      <li><%= link_to "Admin panel", admin_path %></li>
+                  <% end %>
+                  <li><%= link_to "New advert", add_path %></li>
+                  <li><%= link_to "My adverts", current_user %></li>
+                  <li class="divider"></li>
+                  <li>
+                    <%= link_to "Sign out", signout_path, method: "delete" %>
+                  </li>
+                </ul>
+              </li>
+          <% else %>
+              <li><%= link_to "Sign in", signin_path %></li>
+              <li><%= link_to "Sign up", signup_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

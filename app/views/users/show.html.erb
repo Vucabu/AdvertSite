@@ -1,0 +1,22 @@
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= gravatar_for @user, size: 100 %>
+        <%= @user.name %>
+      </h1>
+    </section>
+  </aside>
+  <div class="span8">
+    <h3>Advert Feed (<%= @user.adverts.count %>)</h3>
+    <% if @user.adverts.any? %>
+        <ol class="adverts">
+          <%= render @adverts %>
+        </ol>
+        <%= will_paginate @adverts %>
+    <% else %>
+        <h5>is Empty </h5>
+    <% end %>
+  </div>
+</div>

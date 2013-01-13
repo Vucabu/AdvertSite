@@ -1,0 +1,23 @@
+<div class="row">
+  <% if admin? %>
+      <aside class="span4">
+        <section>
+          <%= render 'shared/user_info' %>
+        </section>
+      </aside>
+
+  <div class="span8">
+    <h3>Admin Feed</h3>
+    <% if @admin_feed_items.any? %>
+        <ol class="adverts">
+          <%= render partial: 'site/admin_feed_item', collection: @admin_feed_items %>
+        </ol>
+        <%= will_paginate @admin_feed_items %>
+    <% end %>
+  </div>
+  <% else %>
+      <div class="span8">
+        <h3>You are not admin (c) Capt.</h3>
+      </div>
+  <% end %>
+</div>
